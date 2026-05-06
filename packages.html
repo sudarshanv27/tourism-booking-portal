@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Travel Packages - Tourism Booking Portal</title>
+    <link rel="icon" href="images/logo.png">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Paytone+One&family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+    <style>
+        .packages-detailed {
+            padding: 60px 0;
+            background: #f5f5f5;
+        }
+        .package-detail-card {
+            display: flex;
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            margin-bottom: 40px;
+            transition: transform 0.3s;
+        }
+        .package-detail-card:hover {
+            transform: translateY(-5px);
+        }
+        .package-detail-card.popular {
+            border: 2px solid #e67e22;
+            position: relative;
+        }
+        .popular-badge {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: #e67e22;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        .package-image {
+            flex: 1;
+            min-height: 400px;
+        }
+        .package-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .package-badge {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            color: white;
+        }
+        .package-badge.budget { background: #27ae60; }
+        .package-badge.mid-range { background: #3498db; }
+        .package-badge.luxury { background: #9b59b6; }
+        .package-content {
+            flex: 1;
+            padding: 30px;
+        }
+        .package-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+        .package-price {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #e67e22;
+        }
+        .package-meta {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #eee;
+        }
+        .package-features-detailed ul {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+            margin: 15px 0;
+            list-style: none;
+        }
+        .package-features-detailed li {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .package-features-detailed i {
+            color: #27ae60;
+        }
+        .special-offer {
+            margin: 20px 0;
+        }
+        .offer-badge {
+            background: #ffd700;
+            color: #333;
+            padding: 10px;
+            border-radius: 10px;
+            text-align: center;
+        }
+        @media (max-width: 768px) {
+            .package-detail-card {
+                flex-direction: column;
+            }
+            .package-image {
+                min-height: 250px;
+            }
+            .package-features-detailed ul {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <a href="index.html" class="logo-link">
+            <img src="images/logo.png" class="logo" alt="Tourism Booking Portal">
+        </a>
+        <ul class="navbar">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="locations.html">Locations</a></li>
+            <li><a href="packages.html" class="active">Packages</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+            <li><a href="register.html" class="register-btn">Book Now</a></li>
+        </ul>
+        <div class="bx bx-menu" id="menu-icon"></div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1>Travel Packages</h1>
+            <p>Choose from our carefully curated packages designed to suit every budget and preference</p>
+        </div>
+    </section>
+
+    <!-- Packages Grid -->
+    <section class="packages-detailed">
+        <div class="container">
+            <!-- Bronze Package -->
+            <div class="package-detail-card">
+                <div class="package-image" style="position: relative;">
+                    <img src="images/package-bronze.jpg" alt="Bronze Package" onerror="this.src='images/bgimg.jpg'">
+                    <div class="package-badge budget">Budget Friendly</div>
+                </div>
+                <div class="package-content">
+                    <div class="package-header">
+                        <h2>Bronze Package</h2>
+                        <div class="package-price">₹9,999/-</div>
+                    </div>
+                    <div class="package-meta">
+                        <span><i class='bx bxs-time'></i> 5 Days / 4 Nights</span>
+                        <span><i class='bx bxs-user'></i> Perfect for Solo/Small Groups</span>
+                        <span><i class='bx bxs-star'></i> 4.2/5 Rating (1,234 reviews)</span>
+                    </div>
+                    <p>Perfect for budget-conscious travelers who want quality experiences without breaking the bank.</p>
+                    <div class="package-features-detailed">
+                        <h4>What's Included:</h4>
+                        <ul>
+                            <li><i class='bx bxs-check-circle'></i> 2 Star Hotel Accommodation</li>
+                            <li><i class='bx bxs-check-circle'></i> Daily Breakfast Included</li>
+                            <li><i class='bx bxs-check-circle'></i> Airport/Hotel Transfers</li>
+                            <li><i class='bx bxs-check-circle'></i> Local Tour Guide</li>
+                            <li><i class='bx bxs-check-circle'></i> 24/7 Customer Support</li>
+                            <li><i class='bx bxs-check-circle'></i> Basic Travel Insurance</li>
+                        </ul>
+                    </div>
+                    <div class="package-actions">
+                        <a href="register.html?package=bronze" class="btn">Book This Package</a>
+                        <a href="contact.html" class="btn-secondary">Customize Package</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Silver Package (Most Popular) -->
+            <div class="package-detail-card popular">
+                <div class="popular-badge">🔥 Most Popular</div>
+                <div class="package-image" style="position: relative;">
+                    <img src="images/package-silver.jpg" alt="Silver Package" onerror="this.src='images/bgimg.jpg'">
+                    <div class="package-badge mid-range">Best Value</div>
+                </div>
+                <div class="package-content">
+                    <div class="package-header">
+                        <h2>Silver Package</h2>
+                        <div class="package-price">₹19,999/-</div>
+                    </div>
+                    <div class="package-meta">
+                        <span><i class='bx bxs-time'></i> 7 Days / 6 Nights</span>
+                        <span><i class='bx bxs-user'></i> Ideal for Couples/Families</span>
+                        <span><i class='bx bxs-star'></i> 4.7/5 Rating (2,567 reviews)</span>
+                    </div>
+                    <p>Enhanced comfort with better amenities and extended stay options. Perfect for couples and families.</p>
+                    <div class="package-features-detailed">
+                        <h4>What's Included:</h4>
+                        <ul>
+                            <li><i class='bx bxs-check-circle'></i> 3 Star Hotel Accommodation</li>
+                            <li><i class='bx bxs-check-circle'></i> Breakfast & Dinner Included</li>
+                            <li><i class='bx bxs-check-circle'></i> Luxury Airport Transfers</li>
+                            <li><i class='bx bxs-check-circle'></i> Professional Tour Guide</li>
+                            <li><i class='bx bxs-check-circle'></i> Premium Customer Support</li>
+                            <li><i class='bx bxs-check-circle'></i> Comprehensive Insurance</li>
+                            <li><i class='bx bxs-check-circle'></i> City Tour with Entry Fees</li>
+                        </ul>
+                    </div>
+                    <div class="special-offer">
+                        <div class="offer-badge"><i class='bx bxs-gift'></i> Special Offer: Free Spa Session</div>
+                    </div>
+                    <div class="package-actions">
+                        <a href="register.html?package=silver" class="btn">Book This Package</a>
+                        <a href="contact.html" class="btn-secondary">Customize Package</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Gold Package -->
+            <div class="package-detail-card">
+                <div class="package-image" style="position: relative;">
+                    <img src="images/package-gold.jpg" alt="Gold Package" onerror="this.src='images/bgimg.jpg'">
+                    <div class="package-badge luxury">Luxury Experience</div>
+                </div>
+                <div class="package-content">
+                    <div class="package-header">
+                        <h2>Gold Package</h2>
+                        <div class="package-price">₹29,999/-</div>
+                    </div>
+                    <div class="package-meta">
+                        <span><i class='bx bxs-time'></i> 10 Days / 9 Nights</span>
+                        <span><i class='bx bxs-user'></i> Luxury for Small Groups</span>
+                        <span><i class='bx bxs-star'></i> 4.9/5 Rating (1,890 reviews)</span>
+                    </div>
+                    <p>Luxury experience with premium services and exclusive amenities for discerning travelers.</p>
+                    <div class="package-features-detailed">
+                        <h4>What's Included:</h4>
+                        <ul>
+                            <li><i class='bx bxs-check-circle'></i> 4 Star Hotel Accommodation</li>
+                            <li><i class='bx bxs-check-circle'></i> All Meals Included</li>
+                            <li><i class='bx bxs-check-circle'></i> Premium Luxury Transfers</li>
+                            <li><i class='bx bxs-check-circle'></i> Expert Multilingual Guide</li>
+                            <li><i class='bx bxs-check-circle'></i> VIP Concierge Service</li>
+                            <li><i class='bx bxs-check-circle'></i> Premium Travel Insurance</li>
+                            <li><i class='bx bxs-check-circle'></i> Private Car with Driver</li>
+                            <li><i class='bx bxs-check-circle'></i> Fine Dining Experiences (2)</li>
+                        </ul>
+                    </div>
+                    <div class="package-actions">
+                        <a href="register.html?package=gold" class="btn">Book This Package</a>
+                        <a href="contact.html" class="btn-secondary">Customize Package</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Platinum Package -->
+            <div class="package-detail-card">
+                <div class="package-image" style="position: relative;">
+                    <img src="images/package-platinum.jpg" alt="Platinum Package" onerror="this.src='images/bgimg.jpg'">
+                    <div class="package-badge luxury">Ultimate Luxury</div>
+                </div>
+                <div class="package-content">
+                    <div class="package-header">
+                        <h2>Platinum Package</h2>
+                        <div class="package-price">₹39,999/-</div>
+                    </div>
+                    <div class="package-meta">
+                        <span><i class='bx bxs-time'></i> 14 Days / 13 Nights</span>
+                        <span><i class='bx bxs-user'></i> Ultimate Luxury Experience</span>
+                        <span><i class='bx bxs-star'></i> 5.0/5 Rating (956 reviews)</span>
+                    </div>
+                    <p>The ultimate travel experience with all-inclusive luxury and personalized services.</p>
+                    <div class="package-features-detailed">
+                        <h4>What's Included:</h4>
+                        <ul>
+                            <li><i class='bx bxs-check-circle'></i> 5 Star Luxury Hotel</li>
+                            <li><i class='bx bxs-check-circle'></i> All Premium Meals Included</li>
+                            <li><i class='bx bxs-check-circle'></i> Luxury Car Airport Transfers</li>
+                            <li><i class='bx bxs-check-circle'></i> Personal Tour Guide & Assistant</li>
+                            <li><i class='bx bxs-check-circle'></i> 24/7 VIP Concierge Service</li>
+                            <li><i class='bx bxs-check-circle'></i> Ultimate Travel Insurance</li>
+                            <li><i class='bx bxs-check-circle'></i> Private Luxury Vehicle</li>
+                            <li><i class='bx bxs-check-circle'></i> Premium Spa Sessions (3)</li>
+                            <li><i class='bx bxs-check-circle'></i> Helicopter Tours (Selected)</li>
+                            <li><i class='bx bxs-check-circle'></i> Butler Service Available</li>
+                        </ul>
+                    </div>
+                    <div class="package-actions">
+                        <a href="register.html?package=platinum" class="btn">Book This Package</a>
+                        <a href="contact.html" class="btn-secondary">Customize Package</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Special Offers -->
+    <section class="why-choose-us">
+        <div class="container">
+            <h2 class="section-title">Special Offers & Deals</h2>
+            <div class="features-grid">
+                <div class="feature">
+                    <i class='bx bxs-calendar'></i>
+                    <h3>Early Bird Discount</h3>
+                    <p>Book 3 months in advance and get 15% off on any package</p>
+                    <span style="color:#e67e22; font-weight:bold;">Code: EARLY15</span>
+                </div>
+                <div class="feature">
+                    <i class='bx bxs-group'></i>
+                    <h3>Group Discount</h3>
+                    <p>Save up to 20% when booking for 4 or more travelers</p>
+                    <span style="color:#e67e22; font-weight:bold;">Contact for details</span>
+                </div>
+                <div class="feature">
+                    <i class='bx bxs-heart'></i>
+                    <h3>Honeymoon Special</h3>
+                    <p>Complimentary romantic dinner and room upgrade</p>
+                    <span style="color:#e67e22; font-weight:bold;">Free Upgrade</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter -->
+    <section class="newsletter">
+        <div class="container">
+            <div class="newsletter-content">
+                <h2>Subscribe to Our Newsletter</h2>
+                <p>Get exclusive travel deals and updates directly in your inbox</p>
+                <form class="newsletter-form" id="newsletterForm">
+                    <input type="email" id="newsletterEmail" placeholder="Enter your email" required>
+                    <button type="submit">Subscribe</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Tourism Booking Portal</h3>
+                    <p>Your trusted partner for unforgettable travel experiences around the world.</p>
+                    <div class="social-links">
+                        <a href="#"><i class='bx bxl-facebook'></i></a>
+                        <a href="#"><i class='bx bxl-instagram'></i></a>
+                        <a href="#"><i class='bx bxl-twitter'></i></a>
+                        <a href="#"><i class='bx bxl-linkedin'></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                        <li><a href="locations.html">Locations</a></li>
+                        <li><a href="packages.html">Packages</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Services</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Flight Booking</a></li>
+                        <li><a href="#">Hotel Reservations</a></li>
+                        <li><a href="#">Tour Packages</a></li>
+                        <li><a href="#">Transportation</a></li>
+                        <li><a href="#">Travel Insurance</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contact Info</h3>
+                    <ul class="footer-contact">
+                        <li><i class='bx bxs-map'></i> 123 Travel Street, Mumbai</li>
+                        <li><i class='bx bxs-phone'></i> +91 9876543210</li>
+                        <li><i class='bx bxs-envelope'></i> info@tourismportal.com</li>
+                        <li><i class='bx bxs-time'></i> Mon - Sun: 24/7</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; <span id="currentYear"></span> Tourism Booking Portal. All Rights Reserved. | Developed by <strong>Sudarshan</strong></p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>

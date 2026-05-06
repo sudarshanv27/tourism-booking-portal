@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Destination Details - Tourism Booking Portal</title>
+    <link rel="icon" href="images/logo.png">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Paytone+One&family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+    <style>
+        .destination-detail { padding: 60px 0; }
+        .detail-container { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; background: white; border-radius: 20px; overflow: hidden; box-shadow: 0 5px 20px rgba(0,0,0,0.1); }
+        .detail-image { width: 100%; height: 100%; min-height: 400px; object-fit: cover; }
+        .detail-info { padding: 40px; }
+        .detail-info h1 { font-size: 2.5rem; margin-bottom: 10px; color: #1a1a2e; }
+        .detail-tagline { color: #e67e22; font-size: 1.2rem; margin-bottom: 20px; }
+        .detail-price { font-size: 2rem; font-weight: bold; color: #e67e22; margin: 20px 0; }
+        .detail-description { color: #666; line-height: 1.8; margin-bottom: 30px; }
+        .info-section { margin: 30px 0; padding: 20px; background: #f8f9fa; border-radius: 15px; }
+        .info-section h3 { margin-bottom: 15px; color: #1a1a2e; }
+        .info-section ul { margin-left: 20px; }
+        .info-section li { margin: 8px 0; color: #555; }
+        .back-btn { display: inline-block; background: #6c757d; color: white; padding: 12px 30px; border-radius: 40px; text-decoration: none; margin-bottom: 30px; transition: 0.3s; }
+        .back-btn:hover { background: #5a6268; }
+        .book-now-btn { display: inline-block; background: #e67e22; color: white; padding: 15px 40px; border-radius: 40px; text-decoration: none; font-weight: 600; font-size: 1.1rem; margin-top: 20px; width: 100%; text-align: center; transition: 0.3s; }
+        .book-now-btn:hover { background: #d35400; transform: translateY(-3px); }
+        @media (max-width: 768px) { .detail-container { grid-template-columns: 1fr; } .detail-image { min-height: 300px; } }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <a href="index.html" class="logo-link"><img src="images/logo.png" class="logo" alt="Tourism Booking Portal" onerror="this.src='https://placehold.co/150x50/e67e22/white?text=Travel'"></a>
+        <ul class="navbar">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="locations.html">Locations</a></li>
+            <li><a href="packages.html">Packages</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+            <li><a href="register.html" class="register-btn">Book Now</a></li>
+        </ul>
+        <div class="bx bx-menu" id="menu-icon"></div>
+    </nav>
+
+    <section class="destination-detail">
+        <div class="container">
+            <a href="javascript:history.back()" class="back-btn"><i class='bx bx-arrow-back'></i> Back to Home</a>
+            <div id="detailContainer" class="detail-container">
+                <div class="detail-info" style="text-align: center; padding: 50px;">Loading destination details...</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column"><h3>Tourism Booking Portal</h3><p>Your trusted partner for unforgettable travel experiences around the world.</p><div class="social-links"><a href="#"><i class='bx bxl-facebook'></i></a><a href="#"><i class='bx bxl-instagram'></i></a><a href="#"><i class='bx bxl-twitter'></i></a><a href="#"><i class='bx bxl-linkedin'></i></a></div></div>
+                <div class="footer-column"><h3>Quick Links</h3><ul class="footer-links"><li><a href="index.html">Home</a></li><li><a href="about.html">About Us</a></li><li><a href="contact.html">Contact Us</a></li><li><a href="locations.html">Locations</a></li><li><a href="packages.html">Packages</a></li></ul></div>
+                <div class="footer-column"><h3>Services</h3><ul class="footer-links"><li><a href="#">Flight Booking</a></li><li><a href="#">Hotel Reservations</a></li><li><a href="#">Tour Packages</a></li><li><a href="#">Transportation</a></li><li><a href="#">Travel Insurance</a></li></ul></div>
+                <div class="footer-column"><h3>Contact Info</h3><ul class="footer-contact"><li><i class='bx bxs-map'></i> 123 Travel Street, Mumbai</li><li><i class='bx bxs-phone'></i> +91 9876543210</li><li><i class='bx bxs-envelope'></i> info@tourismportal.com</li><li><i class='bx bxs-time'></i> Mon - Sun: 24/7</li></ul></div>
+            </div>
+            <div class="footer-bottom"><p>&copy; 2024 Tourism Booking Portal. All Rights Reserved. | Developed by <strong>Sudarshan</strong></p></div>
+        </div>
+    </footer>
+
+    <script>
+        // Get ID from URL - FIXED for undefined issue
+        const urlParams = new URLSearchParams(window.location.search);
+        let destinationId = urlParams.get('id');
+        
+        console.log('Destination ID from URL:', destinationId);
+        
+        // If no ID or ID is undefined, show error
+        if (!destinationId || destinationId === 'undefined' || destinationId === 'null') {
+            document.getElementById('detailContainer').innerHTML = `
+                <div class="detail-info" style="text-align: center; padding: 50px;">
+                    <i class='bx bx-error-circle' style="font-size: 60px; color: #e74c3c;"></i>
+                    <h1>Invalid Destination</h1>
+                    <p>No destination selected. Please go back and select a destination from the homepage.</p>
+                    <a href="index.html" class="btn" style="margin-top: 20px; display: inline-block;">Return to Home</a>
+                </div>
+            `;
+        } else {
+            destinationId = parseInt(destinationId);
+            
+            // Destination database
+            const destinations = {
+                1: {
+                    name: "Kashmir, India",
+                    tagline: "Paradise on Earth",
+                    price: 8999,
+                    image: "images/kashmir.jpg",
+                    imageFallback: "https://images.pexels.com/photos/3479619/pexels-photo-3479619.jpeg",
+                    description: "Known as 'Paradise on Earth,' Kashmir is famous for its stunning landscapes, beautiful gardens, and serene lakes. Experience the beauty of Dal Lake, Mughal Gardens, and Gulmarg's snow-capped mountains. The region offers a perfect blend of natural beauty, adventure activities, and rich cultural heritage.",
+                    bestTime: "March to October",
+                    attractions: ["Dal Lake", "Gulmarg", "Mughal Gardens", "Pahalgam", "Sonamarg"],
+                    activities: ["Shikara ride on Dal Lake", "Gulmarg Gondola ride", "Skiing in winter", "Local handicraft shopping", "Houseboat stay"]
+                },
+                2: {
+                    name: "Istanbul, Turkey",
+                    tagline: "Where East Meets West",
+                    price: 15999,
+                    image: "images/istanbul.jpg",
+                    imageFallback: "https://images.pexels.com/photos/356844/pexels-photo-356844.jpeg",
+                    description: "Where East meets West, Istanbul offers a unique blend of history and modernity. Visit the Hagia Sophia, Blue Mosque, and Grand Bazaar for an unforgettable experience spanning two continents. The city's rich history, vibrant culture, and delicious cuisine make it a must-visit destination.",
+                    bestTime: "April to June, September to October",
+                    attractions: ["Hagia Sophia", "Blue Mosque", "Grand Bazaar", "Topkapi Palace", "Bosphorus Strait"],
+                    activities: ["Bosphorus cruise", "Grand Bazaar shopping", "Turkish bath experience", "Traditional cuisine tasting", "Whirling dervishes show"]
+                },
+                3: {
+                    name: "Paris, France",
+                    tagline: "The City of Love",
+                    price: 25999,
+                    image: "images/paris.jpg",
+                    imageFallback: "https://images.pexels.com/photos/338515/pexels-photo-338515.jpeg",
+                    description: "The City of Light offers iconic landmarks like the Eiffel Tower, Louvre Museum, and Notre-Dame Cathedral. Experience romance, art, and exquisite cuisine in one of the world's most beautiful cities. Paris is known for its cafe culture, fashion houses, and artistic heritage.",
+                    bestTime: "April to June, October",
+                    attractions: ["Eiffel Tower", "Louvre Museum", "Notre-Dame Cathedral", "Champs-Élysées", "Montmartre"],
+                    activities: ["Eiffel Tower summit visit", "Louvre art tour", "Seine river cruise", "French cuisine tasting", "Moulin Rouge show"]
+                },
+                4: {
+                    name: "Bali, Indonesia",
+                    tagline: "Island of Gods",
+                    price: 12999,
+                    image: "images/bali.jpg",
+                    imageFallback: "https://images.pexels.com/photos/2714389/pexels-photo-2714389.jpeg",
+                    description: "Famous for its volcanic mountains, iconic rice paddies, beaches and coral reefs. Experience Balinese culture, ancient temples, spiritual retreats, and warm hospitality in this tropical paradise. Bali offers a perfect mix of adventure, relaxation, and cultural experiences.",
+                    bestTime: "April to October",
+                    attractions: ["Ubud", "Tanah Lot Temple", "Kuta Beach", "Rice Terraces", "Mount Batur"],
+                    activities: ["Surfing at Kuta Beach", "Yoga retreat in Ubud", "Temple hopping", "Balinese spa treatment", "Rice terrace trekking"]
+                },
+                5: {
+                    name: "Dubai, UAE",
+                    tagline: "City of Gold",
+                    price: 18999,
+                    image: "images/dubai.jpg",
+                    imageFallback: "https://images.pexels.com/photos/2938867/pexels-photo-2938867.jpeg",
+                    description: "A city of superlatives, Dubai boasts the world's tallest building, largest shopping mall, and many incredible attractions. Experience luxury shopping, desert safaris, and modern architecture at its finest. Dubai is a playground for adventure seekers and luxury lovers alike.",
+                    bestTime: "November to March",
+                    attractions: ["Burj Khalifa", "Dubai Mall", "Palm Jumeirah", "Dubai Marina", "Desert"],
+                    activities: ["Burj Khalifa observation deck", "Desert safari with dune bashing", "Shopping at Dubai Mall", "Atlantis water park", "Fine dining experiences"]
+                },
+                6: {
+                    name: "Switzerland",
+                    tagline: "Alpine Paradise",
+                    price: 35999,
+                    image: "images/switzerland.jpg",
+                    imageFallback: "https://images.pexels.com/photos/417173/pexels-photo-417173.jpeg",
+                    description: "Home to the majestic Alps, pristine lakes, and charming villages. Switzerland offers world-class skiing, scenic train rides, and breathtaking natural beauty in every season. The country is known for its chocolate, watches, and outdoor adventures.",
+                    bestTime: "June to September, December to March",
+                    attractions: ["Jungfraujoch", "Lake Geneva", "Matterhorn", "Interlaken", "Lucerne"],
+                    activities: ["Skiing in Zermatt", "Jungfraujoch train ride", "Lake Geneva cruise", "Chocolate tasting tour", "Paragliding in Interlaken"]
+                },
+                7: {
+                    name: "Thailand",
+                    tagline: "Land of Smiles",
+                    price: 10999,
+                    image: "images/thailand.jpg",
+                    imageFallback: "https://images.pexels.com/photos/1450346/pexels-photo-1450346.jpeg",
+                    description: "The Land of Smiles offers beautiful beaches, vibrant cities, rich culture, and delicious cuisine. From Bangkok's temples to Phuket's beaches, Thailand has something for everyone. The country's warm hospitality and affordable luxury make it a top travel destination.",
+                    bestTime: "November to February",
+                    attractions: ["Bangkok", "Phuket", "Chiang Mai", "Krabi", "Phi Phi Islands"],
+                    activities: ["Temple tours in Bangkok", "Beach hopping in Phuket", "Elephant sanctuary visit", "Thai cooking class", "Night market shopping"]
+                },
+                8: {
+                    name: "Maldives",
+                    tagline: "Tropical Paradise",
+                    price: 28999,
+                    image: "images/maldives.jpg",
+                    imageFallback: "https://images.pexels.com/photos/3010400/pexels-photo-3010400.jpeg",
+                    description: "A tropical paradise of over 1,000 coral islands. Famous for its crystal-clear waters, white sandy beaches, luxury overwater bungalows, and incredible marine life perfect for snorkeling and diving. The Maldives is the ultimate destination for romance and relaxation.",
+                    bestTime: "November to April",
+                    attractions: ["Male", "Maafushi", "Ari Atoll", "Vaadhoo Island", "Banana Reef"],
+                    activities: ["Snorkeling with manta rays", "Scuba diving", "Sunset cruise", "Overwater villa stay", "Spa treatments"]
+                }
+            };
+            
+            const dest = destinations[destinationId];
+            
+            if (dest) {
+                document.getElementById('detailContainer').innerHTML = `
+                    <div class="detail-image">
+                        <img src="${dest.image}" alt="${dest.name}" style="width:100%;height:100%;object-fit:cover;" onerror="this.src='${dest.imageFallback}'">
+                    </div>
+                    <div class="detail-info">
+                        <h1>${dest.name}</h1>
+                        <div class="detail-tagline">${dest.tagline}</div>
+                        <div class="detail-price">Starting from ₹${dest.price.toLocaleString()}</div>
+                        <p class="detail-description">${dest.description}</p>
+                        
+                        <div class="info-section">
+                            <h3><i class='bx bx-calendar'></i> Best Time to Visit</h3>
+                            <p>${dest.bestTime}</p>
+                        </div>
+                        
+                        <div class="info-section">
+                            <h3><i class='bx bx-landmark'></i> Top Attractions</h3>
+                            <ul>${dest.attractions.map(a => `<li>${a}</li>`).join('')}</ul>
+                        </div>
+                        
+                        <div class="info-section">
+                            <h3><i class='bx bx-run'></i> Activities to Enjoy</h3>
+                            <ul>${dest.activities.map(a => `<li>${a}</li>`).join('')}</ul>
+                        </div>
+                        
+                        <a href="register.html" class="book-now-btn"><i class='bx bx-check-circle'></i> Book This Destination Now</a>
+                    </div>
+                `;
+            } else {
+                document.getElementById('detailContainer').innerHTML = `
+                    <div class="detail-info" style="text-align: center; padding: 50px;">
+                        <i class='bx bx-error-circle' style="font-size: 60px; color: #e74c3c;"></i>
+                        <h1>Destination Not Found</h1>
+                        <p>Sorry, the destination you are looking for does not exist.</p>
+                        <a href="index.html" class="btn" style="margin-top: 20px; display: inline-block;">Return to Home</a>
+                    </div>
+                `;
+            }
+        }
+        
+        // Mobile menu toggle
+        const menuIcon = document.getElementById('menu-icon');
+        const navbar = document.querySelector('.navbar');
+        
+        if (menuIcon) {
+            menuIcon.addEventListener('click', () => {
+                navbar.classList.toggle('active');
+                menuIcon.classList.toggle('bx-x');
+            });
+        }
+        
+        // Image error handling
+        document.querySelectorAll('img').forEach(img => {
+            img.addEventListener('error', function() {
+                if (!this.hasAttribute('data-fallback')) {
+                    this.setAttribute('data-fallback', 'true');
+                    const alt = this.alt.toLowerCase();
+                    if (alt.includes('kashmir')) this.src = 'https://images.pexels.com/photos/3479619/pexels-photo-3479619.jpeg';
+                    else if (alt.includes('istanbul')) this.src = 'https://images.pexels.com/photos/356844/pexels-photo-356844.jpeg';
+                    else if (alt.includes('paris')) this.src = 'https://images.pexels.com/photos/338515/pexels-photo-338515.jpeg';
+                    else if (alt.includes('bali')) this.src = 'https://images.pexels.com/photos/2714389/pexels-photo-2714389.jpeg';
+                    else this.src = 'https://images.pexels.com/photos/3278215/pexels-photo-3278215.jpeg';
+                }
+            });
+        });
+    </script>
+</body>
+</html>

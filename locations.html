@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Locations - Tourism Booking Portal</title>
+    <link rel="icon" href="images/logo.png">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Paytone+One&family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+    <style>
+        .locations-grid-page {
+            padding: 60px 0;
+            background: #f5f5f5;
+        }
+        .location-card-large {
+            display: flex;
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            margin-bottom: 40px;
+            transition: transform 0.3s;
+        }
+        .location-card-large:hover {
+            transform: translateY(-5px);
+        }
+        .location-image {
+            flex: 1;
+            position: relative;
+            min-height: 400px;
+        }
+        .location-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .location-badge {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            color: white;
+        }
+        .location-badge.asia { background: #e67e22; }
+        .location-badge.europe { background: #3498db; }
+        .location-badge.middle-east { background: #9b59b6; }
+        .location-content {
+            flex: 1;
+            padding: 30px;
+        }
+        .location-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 15px 0;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .rating {
+            color: #f39c12;
+        }
+        .price {
+            color: #e67e22;
+            font-weight: bold;
+            font-size: 1.3rem;
+        }
+        .location-features {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin: 20px 0;
+            padding: 15px 0;
+            border-top: 1px solid #eee;
+            border-bottom: 1px solid #eee;
+        }
+        .location-features span {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        .location-highlights {
+            margin: 20px 0;
+        }
+        .location-highlights ul {
+            margin-left: 20px;
+            margin-top: 10px;
+        }
+        .location-highlights li {
+            margin: 5px 0;
+        }
+        .location-actions {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+        .filter-options {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: flex-end;
+        }
+        .filter-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        .filter-group label {
+            font-weight: 600;
+            color: #333;
+        }
+        .filter-group select {
+            padding: 10px 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 14px;
+            min-width: 150px;
+        }
+        @media (max-width: 768px) {
+            .location-card-large {
+                flex-direction: column;
+            }
+            .location-image {
+                min-height: 300px;
+            }
+            .filter-options {
+                flex-direction: column;
+                align-items: stretch;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <a href="index.html" class="logo-link">
+            <img src="images/logo.png" class="logo" alt="Tourism Booking Portal">
+        </a>
+        <ul class="navbar">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="locations.html" class="active">Locations</a></li>
+            <li><a href="packages.html">Packages</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+            <li><a href="register.html" class="register-btn">Book Now</a></li>
+        </ul>
+        <div class="bx bx-menu" id="menu-icon"></div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1>Explore Amazing Destinations</h1>
+            <p>Discover the world's most beautiful places with our curated travel experiences</p>
+        </div>
+    </section>
+
+    <!-- Filter Section -->
+    <section class="locations-filter">
+        <div class="container">
+            <div class="filter-options">
+                <div class="filter-group">
+                    <label for="region-filter">Region</label>
+                    <select id="region-filter">
+                        <option value="all">All Regions</option>
+                        <option value="asia">Asia</option>
+                        <option value="europe">Europe</option>
+                        <option value="middle-east">Middle East</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label for="budget-filter">Budget</label>
+                    <select id="budget-filter">
+                        <option value="all">Any Budget</option>
+                        <option value="budget">Under ₹15,000</option>
+                        <option value="mid-range">₹15,000 - ₹30,000</option>
+                        <option value="luxury">Over ₹30,000</option>
+                    </select>
+                </div>
+                <button class="btn" id="apply-filters">Apply Filters</button>
+                <button class="btn-secondary" id="reset-filters">Reset</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Locations Grid -->
+    <section class="locations-grid-page">
+        <div class="container">
+            <div class="locations-container" id="locationsContainer">
+                <!-- Locations will be loaded dynamically -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Tourism Booking Portal</h3>
+                    <p>Your trusted partner for unforgettable travel experiences around the world.</p>
+                    <div class="social-links">
+                        <a href="#"><i class='bx bxl-facebook'></i></a>
+                        <a href="#"><i class='bx bxl-instagram'></i></a>
+                        <a href="#"><i class='bx bxl-twitter'></i></a>
+                        <a href="#"><i class='bx bxl-linkedin'></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                        <li><a href="locations.html">Locations</a></li>
+                        <li><a href="packages.html">Packages</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Services</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Flight Booking</a></li>
+                        <li><a href="#">Hotel Reservations</a></li>
+                        <li><a href="#">Tour Packages</a></li>
+                        <li><a href="#">Transportation</a></li>
+                        <li><a href="#">Travel Insurance</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contact Info</h3>
+                    <ul class="footer-contact">
+                        <li><i class='bx bxs-map'></i> Travel Street, Penukonda, Andhrapradesh</li>
+                        <li><i class='bx bxs-phone'></i> +91 9014245234</li>
+                        <li><i class='bx bxs-envelope'></i> info@tourismportal.com</li>
+                        <li><i class='bx bxs-time'></i> Mon - Sun: 24/7</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; <span id="currentYear"></span> Tourism Booking Portal. All Rights Reserved. | Developed by <strong>Sudarshan</strong></p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Destination data with regions
+        const allDestinations = [
+            { id: 1, name: "Kashmir, India", tagline: "Paradise on Earth", price: 8999, region: "asia", image: "images/kashmir.jpg", bestTime: "March - October", attractions: "Dal Lake, Gulmarg, Mughal Gardens", activities: "Shikara ride, Gondola ride, Skiing" },
+            { id: 2, name: "Istanbul, Turkey", tagline: "Where East Meets West", price: 15999, region: "europe", image: "images/istanbul.jpg", bestTime: "April - June, September - October", attractions: "Hagia Sophia, Blue Mosque, Grand Bazaar", activities: "Bosphorus Cruise, Turkish Bath" },
+            { id: 3, name: "Paris, France", tagline: "The City of Love", price: 25999, region: "europe", image: "images/paris.jpg", bestTime: "April - June, October", attractions: "Eiffel Tower, Louvre Museum, Notre-Dame", activities: "Romantic cruises, Art tours" },
+            { id: 4, name: "Bali, Indonesia", tagline: "Island of Gods", price: 12999, region: "asia", image: "images/bali.jpg", bestTime: "April - October", attractions: "Ubud, Tanah Lot, Kuta Beach", activities: "Surfing, Yoga, Temple tours" },
+            { id: 5, name: "Dubai, UAE", tagline: "City of Gold", price: 18999, region: "middle-east", image: "images/dubai.jpg", bestTime: "November - March", attractions: "Burj Khalifa, Dubai Mall, Palm Jumeirah", activities: "Desert Safari, Skydiving" },
+            { id: 6, name: "Switzerland", tagline: "Alpine Paradise", price: 35999, region: "europe", image: "images/switzerland.jpg", bestTime: "June-September, December-March", attractions: "Jungfraujoch, Lake Geneva, Matterhorn", activities: "Skiing, Hiking, Scenic trains" },
+            { id: 7, name: "Thailand", tagline: "Land of Smiles", price: 10999, region: "asia", image: "images/thailand.jpg", bestTime: "November - February", attractions: "Bangkok, Phuket, Chiang Mai", activities: "Beach activities, Temple tours" },
+            { id: 8, name: "Maldives", tagline: "Tropical Paradise", price: 28999, region: "asia", image: "images/maldives.jpg", bestTime: "November - April", attractions: "Male, Maafushi, Ari Atoll", activities: "Snorkeling, Diving, Water sports" }
+        ];
+
+        function renderLocations(filterRegion = 'all', filterBudget = 'all') {
+            const container = document.getElementById('locationsContainer');
+            let filtered = [...allDestinations];
+            
+            if (filterRegion !== 'all') {
+                filtered = filtered.filter(d => d.region === filterRegion);
+            }
+            if (filterBudget !== 'all') {
+                if (filterBudget === 'budget') filtered = filtered.filter(d => d.price < 15000);
+                else if (filterBudget === 'mid-range') filtered = filtered.filter(d => d.price >= 15000 && d.price <= 30000);
+                else if (filterBudget === 'luxury') filtered = filtered.filter(d => d.price > 30000);
+            }
+            
+            if (filtered.length === 0) {
+                container.innerHTML = '<div class="text-center" style="padding: 50px;"><h3>No locations found</h3><p>Try adjusting your filters</p></div>';
+                return;
+            }
+            
+            container.innerHTML = filtered.map(dest => `
+                <div class="location-card-large" onclick="viewDestination(${dest.id})">
+                    <div class="location-image">
+                        <img src="${dest.image}" alt="${dest.name}" onerror="this.src='images/bgimg.jpg'">
+                        <div class="location-badge ${dest.region}">${dest.region.toUpperCase()}</div>
+                    </div>
+                    <div class="location-content">
+                        <h2>${dest.name}</h2>
+                        <div class="location-meta">
+                            <span class="rating"><i class='bx bxs-star'></i><i class='bx bxs-star'></i><i class='bx bxs-star'></i><i class='bx bxs-star'></i><i class='bx bxs-star-half'></i> 4.5 (2,000+ reviews)</span>
+                            <span class="price">From ₹${dest.price.toLocaleString()}</span>
+                        </div>
+                        <p>${dest.tagline}. ${dest.bestTime} is the best time to visit. Experience ${dest.attractions} and enjoy ${dest.activities}.</p>
+                        <div class="location-features">
+                            <span><i class='bx bxs-map'></i> Best Time: ${dest.bestTime}</span>
+                            <span><i class='bx bxs-camera'></i> Photography Paradise</span>
+                        </div>
+                        <div class="location-highlights">
+                            <h4>Top Experiences:</h4>
+                            <ul>${dest.attractions.split(',').map(a => `<li>${a.trim()}</li>`).join('')}</ul>
+                        </div>
+                        <div class="location-actions">
+                            <a href="destination-detail.html?id=${dest.id}" class="btn">View Details</a>
+                            <a href="register.html" class="btn-secondary">Book Now</a>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+        
+        function viewDestination(id) {
+            window.location.href = `destination-detail.html?id=${id}`;
+        }
+        
+        // Filter handlers
+        document.getElementById('apply-filters').addEventListener('click', () => {
+            const region = document.getElementById('region-filter').value;
+            const budget = document.getElementById('budget-filter').value;
+            renderLocations(region, budget);
+        });
+        
+        document.getElementById('reset-filters').addEventListener('click', () => {
+            document.getElementById('region-filter').value = 'all';
+            document.getElementById('budget-filter').value = 'all';
+            renderLocations('all', 'all');
+        });
+        
+        // Initialize
+        renderLocations('all', 'all');
+    </script>
+    <script src="js/main.js"></script>
+</body>
+</html>

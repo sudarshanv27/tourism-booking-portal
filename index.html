@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tourism Booking Portal - Your Gateway to World Adventures</title>
+    <link rel="icon" href="images/logo.png">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Paytone+One&family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+    <style>
+        /* Additional styles for the homepage */
+        .destination-card {
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+        .destination-card img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        .destination-card:hover img {
+            transform: scale(1.1);
+        }
+        .card-content {
+            padding: 20px;
+            background: white;
+        }
+        .price {
+            color: #e67e22;
+            font-weight: bold;
+            font-size: 1.2rem;
+            display: block;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <a href="index.html" class="logo-link">
+            <img src="images/logo.png" class="logo" alt="Tourism Booking Portal" onerror="this.src='https://placehold.co/150x50/e67e22/white?text=Travel'">
+        </a>
+        <ul class="navbar">
+            <li><a href="index.html" class="active">Home</a></li>
+            <li><a href="locations.html">Locations</a></li>
+            <li><a href="packages.html">Packages</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+            <li><a href="register.html" class="register-btn">Book Now</a></li>
+        </ul>
+        <div class="bx bx-menu" id="menu-icon"></div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Discover Your Next Adventure</h1>
+            <p>Explore the most beautiful destinations around the world with our expert guides</p>
+            <a href="locations.html" class="btn-primary">Explore Now</a>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Premium Services</h2>
+                <p>We provide end-to-end travel solutions to make your journey seamless and memorable</p>
+            </div>
+            
+            <div class="services-grid">
+                <!-- Service 1: Flight Services -->
+                <div class="service-card">
+                    <div class="service-icon"><i class='bx bx-plane-take-off'></i></div>
+                    <h3>Flight Services</h3>
+                    <p>Book flights at best prices with our exclusive airline partnerships.</p>
+                    <div class="service-features">
+                        <span><i class='bx bxs-check-circle'></i> Arrival & Departure</span>
+                        <span><i class='bx bxs-check-circle'></i> Best Price Guarantee</span>
+                        <span><i class='bx bxs-check-circle'></i> 24/7 Flight Support</span>
+                    </div>
+                    <a href="register.html" class="service-btn">Book Flight →</a>
+                </div>
+
+                <!-- Service 2: Food Services -->
+                <div class="service-card">
+                    <div class="service-icon"><i class='bx bx-restaurant'></i></div>
+                    <h3>Food Services</h3>
+                    <p>Savor delicious local and international cuisines with our premium catering services.</p>
+                    <div class="service-features">
+                        <span><i class='bx bxs-check-circle'></i> Multi-Cuisine Catering</span>
+                        <span><i class='bx bxs-check-circle'></i> Dietary Customization</span>
+                        <span><i class='bx bxs-check-circle'></i> 24/7 Meal Support</span>
+                    </div>
+                    <a href="register.html" class="service-btn">Order Food →</a>
+                </div>
+
+                <!-- Service 3: Travel Services -->
+                <div class="service-card">
+                    <div class="service-icon"><i class='bx bx-bus'></i></div>
+                    <h3>Travel Services</h3>
+                    <p>Hassle-free pick-up and drop services from airport to hotel and all tourist destinations.</p>
+                    <div class="service-features">
+                        <span><i class='bx bxs-check-circle'></i> Pick-up & Drop</span>
+                        <span><i class='bx bxs-check-circle'></i> Luxury Vehicles</span>
+                        <span><i class='bx bxs-check-circle'></i> Professional Drivers</span>
+                    </div>
+                    <a href="register.html" class="service-btn">Book Transfer →</a>
+                </div>
+
+                <!-- Service 4: Accommodation Services -->
+                <div class="service-card">
+                    <div class="service-icon"><i class='bx bx-hotel'></i></div>
+                    <h3>Accommodation</h3>
+                    <p>Stay at the finest hotels and resorts with our exclusive discounts and premium room upgrades.</p>
+                    <div class="service-features">
+                        <span><i class='bx bxs-check-circle'></i> Luxury Stays</span>
+                        <span><i class='bx bxs-check-circle'></i> Best Room Deals</span>
+                        <span><i class='bx bxs-check-circle'></i> Early Check-in</span>
+                    </div>
+                    <a href="register.html" class="service-btn">Book Hotel →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Destinations (UPDATED WITH 8 DESTINATIONS & FIXED IDs) -->
+    <section class="featured-destinations">
+        <div class="container">
+            <div class="section-title">
+                <h2>Popular Destinations</h2>
+                <p>Discover the world's most beautiful places with our curated travel experiences</p>
+            </div>
+            
+            <div class="destination-grid">
+                <!-- Destination 1: Kashmir (ID: 1) -->
+                <div class="destination-card" onclick="viewDestination(1)">
+                    <img src="images/kashmir.jpg" alt="Kashmir" onerror="this.src='https://images.pexels.com/photos/3479619/pexels-photo-3479619.jpeg'">
+                    <div class="card-content">
+                        <h3>Kashmir, India</h3>
+                        <p>Paradise on Earth</p>
+                        <span class="price">From ₹8,999</span>
+                    </div>
+                </div>
+
+                <!-- Destination 2: Istanbul (ID: 2) -->
+                <div class="destination-card" onclick="viewDestination(2)">
+                    <img src="images/istanbul.jpg" alt="Istanbul" onerror="this.src='https://images.pexels.com/photos/356844/pexels-photo-356844.jpeg'">
+                    <div class="card-content">
+                        <h3>Istanbul, Turkey</h3>
+                        <p>Where East Meets West</p>
+                        <span class="price">From ₹15,999</span>
+                    </div>
+                </div>
+
+                <!-- Destination 3: Paris (ID: 3) -->
+                <div class="destination-card" onclick="viewDestination(3)">
+                    <img src="images/paris.jpg" alt="Paris" onerror="this.src='https://images.pexels.com/photos/338515/pexels-photo-338515.jpeg'">
+                    <div class="card-content">
+                        <h3>Paris, France</h3>
+                        <p>The City of Love</p>
+                        <span class="price">From ₹25,999</span>
+                    </div>
+                </div>
+
+                <!-- Destination 4: Bali (ID: 4) -->
+                <div class="destination-card" onclick="viewDestination(4)">
+                    <img src="images/bali.jpg" alt="Bali" onerror="this.src='https://images.pexels.com/photos/2714389/pexels-photo-2714389.jpeg'">
+                    <div class="card-content">
+                        <h3>Bali, Indonesia</h3>
+                        <p>Island of Gods</p>
+                        <span class="price">From ₹12,999</span>
+                    </div>
+                </div>
+
+                <!-- Destination 5: Dubai (ID: 5) -->
+                <div class="destination-card" onclick="viewDestination(5)">
+                    <img src="images/dubai.jpg" alt="Dubai" onerror="this.src='https://images.pexels.com/photos/2938867/pexels-photo-2938867.jpeg'">
+                    <div class="card-content">
+                        <h3>Dubai, UAE</h3>
+                        <p>City of Gold</p>
+                        <span class="price">From ₹18,999</span>
+                    </div>
+                </div>
+
+                <!-- Destination 6: Switzerland (ID: 6) -->
+                <div class="destination-card" onclick="viewDestination(6)">
+                    <img src="images/switzerland.jpg" alt="Switzerland" onerror="this.src='https://images.pexels.com/photos/417173/pexels-photo-417173.jpeg'">
+                    <div class="card-content">
+                        <h3>Switzerland</h3>
+                        <p>Alpine Paradise</p>
+                        <span class="price">From ₹35,999</span>
+                    </div>
+                </div>
+
+                <!-- Destination 7: Thailand (ID: 7) -->
+                <div class="destination-card" onclick="viewDestination(7)">
+                    <img src="images/thailand.jpg" alt="Thailand" onerror="this.src='https://images.pexels.com/photos/1450346/pexels-photo-1450346.jpeg'">
+                    <div class="card-content">
+                        <h3>Thailand</h3>
+                        <p>Land of Smiles</p>
+                        <span class="price">From ₹10,999</span>
+                    </div>
+                </div>
+
+                <!-- Destination 8: Maldives (ID: 8) -->
+                <div class="destination-card" onclick="viewDestination(8)">
+                    <img src="images/maldives.jpg" alt="Maldives" onerror="this.src='https://images.pexels.com/photos/3010400/pexels-photo-3010400.jpeg'">
+                    <div class="card-content">
+                        <h3>Maldives</h3>
+                        <p>Tropical Paradise</p>
+                        <span class="price">From ₹28,999</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us -->
+    <section class="why-choose-us">
+        <div class="container">
+            <h2 class="section-title">Why Choose Us</h2>
+            <div class="features-grid">
+                <div class="feature"><i class='bx bx-plane-alt'></i><h3>Best Flight Deals</h3><p>Get the best prices on flights to your dream destinations</p></div>
+                <div class="feature"><i class='bx bx-hotel'></i><h3>Luxury Hotels</h3><p>Stay at the finest hotels with our exclusive partnerships</p></div>
+                <div class="feature"><i class='bx bx-map-alt'></i><h3>Expert Guides</h3><p>Local experts to show you the hidden gems</p></div>
+                <div class="feature"><i class='bx bx-headphone'></i><h3>24/7 Support</h3><p>We're here to help you anytime, anywhere</p></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Travel Packages -->
+    <section class="packages">
+        <div class="container">
+            <h2 class="section-title">Special Packages</h2>
+            <div class="packages-grid">
+                <div class="package-card" onclick="location.href='register.html?package=bronze'">
+                    <img src="images/package-bronze.jpg" alt="Bronze Package" onerror="this.src='https://images.pexels.com/photos/2387873/pexels-photo-2387873.jpeg'">
+                    <div class="card-content"><h3>Bronze Package</h3><p>5 Days / 4 Nights</p><div class="package-details"><span><i class='bx bx-user'></i> Solo/Small Groups</span><span class="package-price">₹9,999</span></div></div>
+                </div>
+                <div class="package-card" onclick="location.href='register.html?package=silver'">
+                    <img src="images/package-silver.jpg" alt="Silver Package" onerror="this.src='https://images.pexels.com/photos/164595/pexels-photo-164595.jpeg'">
+                    <div class="card-content"><h3>Silver Package</h3><p>7 Days / 6 Nights</p><div class="package-details"><span><i class='bx bx-group'></i> Couples/Families</span><span class="package-price">₹19,999</span></div></div>
+                </div>
+                <div class="package-card" onclick="location.href='register.html?package=gold'">
+                    <img src="images/package-gold.jpg" alt="Gold Package" onerror="this.src='https://images.pexels.com/photos/258154/pexels-photo-258154.jpeg'">
+                    <div class="card-content"><h3>Gold Package</h3><p>10 Days / 9 Nights</p><div class="package-details"><span><i class='bx bx-star'></i> Luxury</span><span class="package-price">₹29,999</span></div></div>
+                </div>
+                <div class="package-card" onclick="location.href='register.html?package=platinum'">
+                    <img src="images/package-platinum.jpg" alt="Platinum Package" onerror="this.src='https://images.pexels.com/photos/271624/pexels-photo-271624.jpeg'">
+                    <div class="card-content"><h3>Platinum Package</h3><p>14 Days / 13 Nights</p><div class="package-details"><span><i class='bx bx-diamond'></i> Ultimate Luxury</span><span class="package-price">₹39,999</span></div></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials">
+        <div class="container">
+            <h2 class="section-title">What Our Travelers Say</h2>
+            <div class="testimonials-grid">
+                <div class="testimonial-card"><img src="images/traveler-1.jpg" alt="Traveler" onerror="this.src='https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg'"><p>"Amazing experience! The tour was well-organized."</p><h4>Rahul Sharma</h4><span>Traveled to Kashmir</span></div>
+                <div class="testimonial-card"><img src="images/traveler-2.jpg" alt="Traveler" onerror="this.src='https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg'"><p>"Best vacation ever! Everything was perfect."</p><h4>Priya Patel</h4><span>Traveled to Bali</span></div>
+                <div class="testimonial-card"><img src="images/traveler-3.jpg" alt="Traveler" onerror="this.src='https://images.pexels.com/photos/2379005/pexels-photo-2379005.jpeg'"><p>"Unforgettable memories! Will definitely book again."</p><h4>Amit Kumar</h4><span>Traveled to Istanbul</span></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter -->
+    <section class="newsletter">
+        <div class="container">
+            <div class="newsletter-content">
+                <h2>Subscribe to Our Newsletter</h2>
+                <p>Get the latest travel deals and updates directly in your inbox</p>
+                <form class="newsletter-form" id="newsletterForm">
+                    <input type="email" id="newsletterEmail" placeholder="Enter your email" required>
+                    <button type="submit">Subscribe</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Tourism Booking Portal</h3>
+                    <p>Your trusted partner for unforgettable travel experiences around the world.</p>
+                    <div class="social-links">
+                        <a href="https://www.facebook.com/share/1Fr5RTMqN9/"><i class='bx bxl-facebook'></i></a>
+                        <a href="https://www.instagram.com/sudarshan27_?igsh=NzQ1YjJlYm9oYTVn"><i class='bx bxl-instagram'></i></a>
+                        <a href="#"><i class='bx bxl-twitter'></i></a>
+                        <a href="https://www.linkedin.com/in/sudarshan27"><i class='bx bxl-linkedin'></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                        <li><a href="locations.html">Locations</a></li>
+                        <li><a href="packages.html">Packages</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Services</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Flight Booking</a></li>
+                        <li><a href="#">Hotel Reservations</a></li>
+                        <li><a href="#">Tour Packages</a></li>
+                        <li><a href="#">Transportation</a></li>
+                        <li><a href="#">Travel Insurance</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contact Info</h3>
+                    <ul class="footer-contact">
+                        <li><i class='bx bxs-map'></i> Travel Street, Penukonda, Andhrapradesh</li>
+                        <li><i class='bx bxs-phone'></i> +91 9014245234</li>
+                        <li><i class='bx bxs-envelope'></i> info@tourismportal.com</li>
+                        <li><i class='bx bxs-time'></i> Mon - Sun: 24/7</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Tourism Booking Portal. All Rights Reserved. | Developed by <strong>Sudarshan</strong></p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // ========================================
+        // MAIN JAVASCRIPT FOR HOMEPAGE
+        // ========================================
+
+        // Function to view destination details - FIXED for undefined issue
+        function viewDestination(id) {
+            if (id && id !== 'undefined') {
+                window.location.href = `destination-detail.html?id=${id}`;
+            } else {
+                console.error('Invalid destination ID:', id);
+                alert('Unable to load destination. Please try again.');
+            }
+        }
+
+        // Mobile menu toggle
+        const menuIcon = document.getElementById('menu-icon');
+        const navbar = document.querySelector('.navbar');
+        
+        if (menuIcon) {
+            menuIcon.addEventListener('click', () => {
+                navbar.classList.toggle('active');
+                menuIcon.classList.toggle('bx-x');
+            });
+        }
+        
+        // Newsletter subscription
+        const newsletterForm = document.getElementById('newsletterForm');
+        if (newsletterForm) {
+            newsletterForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const email = document.getElementById('newsletterEmail').value;
+                if (email) {
+                    let subscribers = JSON.parse(localStorage.getItem('newsletter_subscribers') || '[]');
+                    if (!subscribers.includes(email)) {
+                        subscribers.push(email);
+                        localStorage.setItem('newsletter_subscribers', JSON.stringify(subscribers));
+                        alert('Thank you for subscribing! You will receive updates on your email.');
+                    } else {
+                        alert('You are already subscribed!');
+                    }
+                    newsletterForm.reset();
+                }
+            });
+        }
+        
+        // Image error handling - fallback to online images
+        document.querySelectorAll('img').forEach(img => {
+            img.addEventListener('error', function() {
+                if (!this.hasAttribute('data-fallback')) {
+                    this.setAttribute('data-fallback', 'true');
+                    // Fallback images based on alt text
+                    const alt = this.alt.toLowerCase();
+                    if (alt.includes('kashmir')) this.src = 'https://images.pexels.com/photos/3479619/pexels-photo-3479619.jpeg';
+                    else if (alt.includes('istanbul')) this.src = 'https://images.pexels.com/photos/356844/pexels-photo-356844.jpeg';
+                    else if (alt.includes('paris')) this.src = 'https://images.pexels.com/photos/338515/pexels-photo-338515.jpeg';
+                    else if (alt.includes('bali')) this.src = 'https://images.pexels.com/photos/2714389/pexels-photo-2714389.jpeg';
+                    else if (alt.includes('dubai')) this.src = 'https://images.pexels.com/photos/2938867/pexels-photo-2938867.jpeg';
+                    else if (alt.includes('switzerland')) this.src = 'https://images.pexels.com/photos/417173/pexels-photo-417173.jpeg';
+                    else if (alt.includes('thailand')) this.src = 'https://images.pexels.com/photos/1450346/pexels-photo-1450346.jpeg';
+                    else if (alt.includes('maldives')) this.src = 'https://images.pexels.com/photos/3010400/pexels-photo-3010400.jpeg';
+                    else this.src = 'https://images.pexels.com/photos/3278215/pexels-photo-3278215.jpeg';
+                }
+            });
+        });
+        
+        // Animate on scroll
+        const observerOptions = { threshold: 0.1, rootMargin: '0px 0px -50px 0px' };
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+        
+        document.querySelectorAll('.destination-card, .package-card, .feature, .testimonial-card, .service-card').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(el);
+        });
+        
+        // Set current year in footer
+        const yearSpan = document.getElementById('currentYear');
+        if (yearSpan) {
+            yearSpan.textContent = new Date().getFullYear();
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register - Tourism Booking Portal</title>
+    <link rel="icon" href="images/logo.png">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Paytone+One&family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+    <style>
+        .registration-section {
+            padding: 60px 0;
+            background: #f5f5f5;
+        }
+        .registration-form-wrapper {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+        .registration-steps {
+            display: flex;
+            background: #f8f9fa;
+            padding: 20px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        .step {
+            flex: 1;
+            text-align: center;
+            cursor: pointer;
+        }
+        .step-number {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            line-height: 40px;
+            border-radius: 50%;
+            background: #ddd;
+            color: #666;
+        }
+        .step.active .step-number { background: #e67e22; color: white; }
+        .step.completed .step-number { background: #27ae60; color: white; }
+        .step-text { display: block; font-size: 12px; margin-top: 8px; }
+        .step.active .step-text { color: #e67e22; font-weight: 600; }
+        .form-step { display: none; padding: 30px; }
+        .form-step.active { display: block; }
+        .form-group { margin-bottom: 20px; }
+        .form-group label { display: block; margin-bottom: 8px; font-weight: 600; }
+        .form-group input, .form-group select, .form-group textarea { width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 8px; }
+        .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+        .radio-group { display: flex; gap: 20px; }
+        .checkbox-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 15px; margin-top: 10px; }
+        .package-option-form { border: 2px solid #eee; border-radius: 10px; margin-bottom: 15px; }
+        .package-option-form label { display: block; padding: 15px; cursor: pointer; margin: 0; }
+        .package-option-form input:checked + label { background: #fef5e7; border-color: #e67e22; }
+        .package-price { float: right; color: #e67e22; font-weight: bold; }
+        .summary-card { background: #f8f9fa; border-radius: 10px; padding: 20px; margin-bottom: 20px; }
+        .summary-item { display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid #eee; }
+        .summary-item.total { border-top: 2px solid #ddd; margin-top: 10px; padding-top: 15px; font-size: 18px; color: #e67e22; }
+        .form-actions { text-align: center; margin-top: 30px; }
+        .btn-secondary { background: #6c757d; margin-right: 10px; }
+        @media (max-width: 768px) {
+            .form-row { grid-template-columns: 1fr; }
+            .registration-steps { flex-direction: column; gap: 10px; }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="index.html" class="logo-link"><img src="images/logo.png" class="logo" alt="Tourism Booking Portal"></a>
+        <ul class="navbar">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="locations.html">Locations</a></li>
+            <li><a href="packages.html">Packages</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+            <li><a href="register.html" class="register-btn active">Book Now</a></li>
+        </ul>
+        <div class="bx bx-menu" id="menu-icon"></div>
+    </nav>
+
+    <section class="page-header">
+        <div class="container"><h1>Book Your Dream Vacation</h1><p>Fill out the form below to register for your perfect travel experience</p></div>
+    </section>
+
+    <section class="registration-section">
+        <div class="container">
+            <div class="registration-form-wrapper">
+                <div class="registration-steps">
+                    <div class="step active" data-step="1"><span class="step-number">1</span><span class="step-text">Personal Info</span></div>
+                    <div class="step" data-step="2"><span class="step-number">2</span><span class="step-text">Travel Details</span></div>
+                    <div class="step" data-step="3"><span class="step-number">3</span><span class="step-text">Confirmation</span></div>
+                </div>
+
+                <form id="registrationForm">
+                    <!-- Step 1 -->
+                    <div class="form-step active" id="step1">
+                        <h2>Personal Information</h2>
+                        <div class="form-row">
+                            <div class="form-group"><label>Full Name *</label><input type="text" id="fullName" required></div>
+                            <div class="form-group"><label>Email *</label><input type="email" id="email" required></div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group"><label>Phone *</label><input type="tel" id="phone" required></div>
+                            <div class="form-group"><label>Age *</label><input type="number" id="age" min="18" max="100" required></div>
+                        </div>
+                        <div class="form-group"><label>Gender *</label><div class="radio-group"><label><input type="radio" name="gender" value="Male"> Male</label><label><input type="radio" name="gender" value="Female"> Female</label><label><input type="radio" name="gender" value="Other"> Other</label></div></div>
+                        <div class="form-actions"><button type="button" class="btn next-step" data-next="2">Next →</button></div>
+                    </div>
+
+                    <!-- Step 2 -->
+                    <div class="form-step" id="step2">
+                        <h2>Travel Details</h2>
+                        <div class="form-row">
+                            <div class="form-group"><label>Departure Date *</label><input type="date" id="departure" required></div>
+                            <div class="form-group"><label>Return Date *</label><input type="date" id="return" required></div>
+                        </div>
+                        <div class="form-group"><label>Destinations *</label><div class="checkbox-grid" id="destinationsCheckbox"></div></div>
+                        <div class="form-group"><label>Package Selection *</label><div id="packagesRadio"></div></div>
+                        <div class="form-group"><label>Special Requirements</label><textarea id="requirements" rows="3" placeholder="Any special requests?"></textarea></div>
+                        <div class="form-actions"><button type="button" class="btn-secondary prev-step" data-prev="1">← Previous</button><button type="button" class="btn next-step" data-next="3">Next →</button></div>
+                    </div>
+
+                    <!-- Step 3 -->
+                    <div class="form-step" id="step3">
+                        <h2>Confirmation</h2>
+                        <div class="summary-card" id="summary"></div>
+                        <div class="terms-section"><label><input type="checkbox" id="terms" required> I agree to the Terms & Conditions and Privacy Policy.</label></div>
+                        <div class="form-actions"><button type="button" class="btn-secondary prev-step" data-prev="2">← Previous</button><button type="submit" class="btn">Confirm & Book</button></div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column"><h3>Tourism Booking Portal</h3><p>Your trusted partner for unforgettable travel experiences.</p><div class="social-links"><a href="https://www.facebook.com/share/1Fr5RTMqN9"><i class='bx bxl-facebook'></i></a><a href="https://www.instagram.com/sudarshan27_?igsh=NzQ1YjJlYm9oYTVn"><i class='bx bxl-instagram'></i></a><a href="#"><i class='bx bxl-twitter'></i></a><a href="https://www.linkedin.com/in/sudarshan27"><i class='bx bxl-linkedin'></i></a></div></div>
+                <div class="footer-column"><h3>Quick Links</h3><ul class="footer-links"><li><a href="index.html">Home</a></li><li><a href="about.html">About Us</a></li><li><a href="contact.html">Contact Us</a></li><li><a href="locations.html">Locations</a></li><li><a href="packages.html">Packages</a></li></ul></div>
+                <div class="footer-column"><h3>Services</h3><ul class="footer-links"><li><a href="#">Flight Booking</a></li><li><a href="#">Hotel Reservations</a></li><li><a href="#">Tour Packages</a></li><li><a href="#">Transportation</a></li><li><a href="#">Travel Insurance</a></li></ul></div>
+                <div class="footer-column"><h3>Contact Info</h3><ul class="footer-contact"><li><i class='bx bxs-map'></i> 123 Travel Street, Mumbai</li><li><i class='bx bxs-phone'></i> +91 9876543210</li><li><i class='bx bxs-envelope'></i> info@tourismportal.com</li><li><i class='bx bxs-time'></i> Mon - Sun: 24/7</li></ul></div>
+            </div>
+            <div class="footer-bottom"><p>&copy; <span id="currentYear"></span> Tourism Booking Portal. All Rights Reserved. | Developed by <strong>Sudarshan</strong></p></div>
+        </div>
+    </footer>
+
+    <script>
+        const destinations = ['Kashmir', 'Istanbul', 'Paris', 'Bali', 'Dubai', 'Switzerland', 'Thailand', 'Maldives'];
+        const packages = [
+            { id: 'bronze', name: 'Bronze Package', price: 9999, duration: '5 Days / 4 Nights' },
+            { id: 'silver', name: 'Silver Package', price: 19999, duration: '7 Days / 6 Nights' },
+            { id: 'gold', name: 'Gold Package', price: 29999, duration: '10 Days / 9 Nights' },
+            { id: 'platinum', name: 'Platinum Package', price: 39999, duration: '14 Days / 13 Nights' }
+        ];
+
+        // Populate destinations
+        document.getElementById('destinationsCheckbox').innerHTML = destinations.map(d => `<label><input type="checkbox" name="destination" value="${d}"> ${d}</label>`).join('');
+        document.getElementById('packagesRadio').innerHTML = packages.map(p => `<div class="package-option-form"><input type="radio" id="${p.id}" name="package" value="${p.name}" data-price="${p.price}"><label for="${p.id}"><strong>${p.name}</strong><span class="package-price">₹${p.price.toLocaleString()}</span><br><small>${p.duration}</small></label></div>`).join('');
+
+        // Step navigation
+        let currentStep = 1;
+        function updateSteps(step) {
+            document.querySelectorAll('.form-step').forEach((s, i) => s.classList.toggle('active', i + 1 === step));
+            document.querySelectorAll('.step').forEach((s, i) => { s.classList.toggle('active', i + 1 === step); if (i + 1 < step) s.classList.add('completed'); else s.classList.remove('completed'); });
+            currentStep = step;
+        }
+        document.querySelectorAll('.next-step').forEach(btn => btn.addEventListener('click', () => { if (validateStep(currentStep)) { if (currentStep === 2) updateSummary(); updateSteps(currentStep + 1); } }));
+        document.querySelectorAll('.prev-step').forEach(btn => btn.addEventListener('click', () => updateSteps(currentStep - 1)));
+        document.querySelectorAll('.step').forEach(step => step.addEventListener('click', () => { if (parseInt(step.dataset.step) < currentStep) updateSteps(parseInt(step.dataset.step)); }));
+
+        function validateStep(step) {
+            if (step === 1) {
+                if (!document.getElementById('fullName').value) { alert('Please enter your name'); return false; }
+                if (!document.getElementById('email').value) { alert('Please enter your email'); return false; }
+                if (!document.getElementById('phone').value) { alert('Please enter your phone number'); return false; }
+                if (!document.getElementById('age').value || document.getElementById('age').value < 18) { alert('You must be 18 or older'); return false; }
+                if (!document.querySelector('input[name="gender"]:checked')) { alert('Please select your gender'); return false; }
+            }
+            if (step === 2) {
+                if (!document.getElementById('departure').value) { alert('Please select departure date'); return false; }
+                if (!document.getElementById('return').value) { alert('Please select return date'); return false; }
+                if (!document.querySelector('input[name="destination"]:checked')) { alert('Please select at least one destination'); return false; }
+                if (!document.querySelector('input[name="package"]:checked')) { alert('Please select a package'); return false; }
+            }
+            return true;
+        }
+
+        function updateSummary() {
+            const name = document.getElementById('fullName').value;
+            const email = document.getElementById('email').value;
+            const phone = document.getElementById('phone').value;
+            const age = document.getElementById('age').value;
+            const gender = document.querySelector('input[name="gender"]:checked')?.value;
+            const departure = document.getElementById('departure').value;
+            const returnDate = document.getElementById('return').value;
+            const destinations = Array.from(document.querySelectorAll('input[name="destination"]:checked')).map(cb => cb.value);
+            const selectedPackage = document.querySelector('input[name="package"]:checked');
+            const packageName = selectedPackage?.value;
+            const packagePrice = parseInt(selectedPackage?.dataset.price);
+            
+            document.getElementById('summary').innerHTML = `
+                <div class="summary-item"><strong>Name:</strong> <span>${name}</span></div>
+                <div class="summary-item"><strong>Email:</strong> <span>${email}</span></div>
+                <div class="summary-item"><strong>Phone:</strong> <span>${phone}</span></div>
+                <div class="summary-item"><strong>Age/Gender:</strong> <span>${age} yrs, ${gender}</span></div>
+                <div class="summary-item"><strong>Travel Dates:</strong> <span>${departure} to ${returnDate}</span></div>
+                <div class="summary-item"><strong>Destinations:</strong> <span>${destinations.join(', ')}</span></div>
+                <div class="summary-item"><strong>Package:</strong> <span>${packageName}</span></div>
+                <div class="summary-item total"><strong>Total Amount:</strong> <span>₹${packagePrice.toLocaleString()}</span></div>
+            `;
+        }
+
+        // Form submission
+        document.getElementById('registrationForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            if (!document.getElementById('terms').checked) { alert('Please accept the terms and conditions'); return; }
+            
+            const registration = {
+                id: Date.now(),
+                firstName: document.getElementById('fullName').value.split(' ')[0],
+                lastName: document.getElementById('fullName').value.split(' ').slice(1).join(' ') || '',
+                email: document.getElementById('email').value,
+                phone: document.getElementById('phone').value,
+                age: document.getElementById('age').value,
+                gender: document.querySelector('input[name="gender"]:checked')?.value,
+                departure: document.getElementById('departure').value,
+                return: document.getElementById('return').value,
+                destinations: Array.from(document.querySelectorAll('input[name="destination"]:checked')).map(cb => cb.value),
+                package: document.querySelector('input[name="package"]:checked')?.value,
+                packagePrice: document.querySelector('input[name="package"]:checked')?.dataset.price,
+                requirements: document.getElementById('requirements').value
+            };
+            
+            let registrations = JSON.parse(localStorage.getItem('user_registrations') || '[]');
+            registrations.push(registration);
+            localStorage.setItem('user_registrations', JSON.stringify(registrations));
+            
+            alert('Booking Successful! A confirmation email has been sent.');
+            window.location.href = 'index.html';
+        });
+
+        // Set min dates
+        const today = new Date().toISOString().split('T')[0];
+        document.getElementById('departure').min = today;
+        document.getElementById('return').min = today;
+        document.getElementById('departure').addEventListener('change', () => document.getElementById('return').min = document.getElementById('departure').value);
+
+        // Pre-fill from URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const packageParam = urlParams.get('package');
+        if (packageParam) document.getElementById(packageParam)?.click();
+    </script>
+    <script src="js/main.js"></script>
+</body>
+</html>
