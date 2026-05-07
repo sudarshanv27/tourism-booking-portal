@@ -78,7 +78,7 @@ STEP 3: Install Live Server extension (if using VS Code)
 
 STEP 4: Right-click on index.html and select "Open with Live Server"
 
-STEP 5: The website will open at http://127.0.0.1:5500/
+STEP 5: The website will open at https://sudarshanv27.github.io/tourism-booking-portal/
 
 ================================================================================
                         PAGE NAVIGATION
