@@ -80,8 +80,6 @@ STEP 4: Right-click on index.html and select "Open with Live Server"
 
 STEP 5: The website will open at https://sudarshanv27.github.io/tourism-booking-portal/
 
-[Live Demo URL - https://weather-application-e6qx.onrender.com]
-
 ================================================================================
                         PAGE NAVIGATION
 ================================================================================
